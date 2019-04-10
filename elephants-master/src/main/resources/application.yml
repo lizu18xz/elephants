@@ -1,0 +1,33 @@
+server:
+  port: 7000
+  servlet:
+    context-path: /master
+
+spring:
+  application:
+    name: master
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/elephants?autoReconnect=true
+    username: root
+    password: root123
+    tomcat:
+      max-active: 4
+      min-idle: 2
+      initial-size: 2
+
+master:
+  haEnable: false
+  masterId: master01
+  connectPort : 9887 #netty通信的端口
+  maxMemRate : 0.80       #已使用内存占总内存的最大比例,默认0.80。当worker内存使用达到此值时将不会再向此work发任务
+  maxCpuLoadPerCore : 1.0   #cpu load per core等于最近1分钟系统的平均cpu负载÷cpu核心数量，默认1.0。当worker平均负载使用达到此值时将不会再向此work发任务
+  systemMemUsed : 4000  # 系统占用内存
+  perTaskUseMem : 500   # 假设每个任务使用内存500M
+  zkServer: 192.168.88.131:2181

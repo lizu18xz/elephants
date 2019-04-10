@@ -1,0 +1,30 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /work
+
+spring:
+  application:
+    name: work
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://10.49.139.62:3306/elephants?autoReconnect=true
+    username: root
+    password: root123
+    tomcat:
+      max-active: 4
+      min-idle: 2
+      initial-size: 2
+
+work:
+  zookeeper:
+    address: 192.168.88.131:2181
+    timeout: 2000
+  connectPort : 9887 #netty通信的端口
+  heartBeat : 3      #心跳传递时间频率
